@@ -88,6 +88,11 @@ export async function deployGreetAccount(
     programId
   );
 
+  // generate a random, incorrect key
+  const incorrectPubkey = Keypair.generate().publicKey;
+
+  greetedPubkey = incorrectPubkey;
+
   // Deploy greeting account or increment counter within greetin account already deployed
   if (!(await checkAccountDeployed(connection, greetedPubkey))) {
     // size of an account based on serialisation
